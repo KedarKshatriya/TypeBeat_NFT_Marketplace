@@ -1,0 +1,16 @@
+{
+  "name": "Sample 1",
+  "description": "Testing Music Samples",
+  "image": "https://gateway.pinata.cloud/ipfs/QmR2VMN5u6GYWaSrPTkgWQ1EeHuubQD8FGYAa3knM4LMd3/1.wav",
+  "attributes": [
+    {
+      "trait_type": "Artist",
+      "value": "A1"
+    },
+    {
+        "display_type": "number",
+        "trait_type": "Year",
+        "value": 2000
+    }
+  ]
+}
