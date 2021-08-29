@@ -1,3 +1,139 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+
+@tailwind utilities;
+
+@import url("https://rsms.me/inter/inter.css");
+html {
+  font-family: "Inter", sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
+}
+
+html,
+body {
+  @apply h-screen bg-white dark:bg-black;
+  @apply text-secondary dark:text-white;
+}
+
+body {
+  height: 100vh;
+  -webkit-touch-callout: none !important;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    height: -webkit-fill-available;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+*:not(input, textarea, [contenteditable="true"]) {
+  -webkit-user-select: none !important;
+}
+
+.button {
+  @apply inline-flex rounded px-2.5 py-1.5 text-xs rounded-xl items-center border border-transparent font-medium shadow-sm text-white bg-primary focus:outline-none focus:ring-1 focus:ring-offset-0 focus:ring-secondary-800;
+}
+
+.button__round {
+  @apply rounded-full !important;
+}
+
+.button__secondary {
+  @apply bg-white text-secondary;
+}
+
+.button__third {
+  @apply bg-secondary text-white;
+}
+
+.button__sm {
+  @apply px-2.5 py-1.5 text-xs;
+}
+
+.button__md {
+  @apply px-3 py-2 text-sm;
+}
+
+.button__lg {
+  @apply px-4 py-2 text-sm;
+}
+
+.button__xl {
+  @apply px-6 py-3 text-base;
+}
+
+.header {
+  @apply max-w-5xl px-4 mx-auto relative min-h-16 flex justify-between;
+}
+
+@screen sm {
+  .header {
+    @apply px-8;
+  }
+}
+
+.nav--link {
+  @apply p-2;
+  @apply relative;
+}
+
+.nav--link.nav--link__selected::before {
+  background-color: white;
+  border-radius: 1px !important;
+  bottom: 0px !important;
+  content: "" !important;
+  height: 2px !important;
+  left: 50% !important;
+  margin-left: -9px !important;
+  position: absolute !important;
+  -webkit-transform: scaleX(1) !important;
+  -ms-transform: scaleX(1) !important;
+  transform: scaleX(1) !important;
+  -webkit-transition: 0.2s -webkit-transform cubic-bezier(0, 0, 0.1, 1),
+    0.2s transform cubic-bezier(0, 0, 0.1, 1) !important;
+  -moz-transition: 0.2s transform cubic-bezier(0, 0, 0.1, 1) !important;
+  transition: 0.2s -ms-transform cubic-bezier(0, 0, 0.1, 1),
+    0.2s -webkit-transform cubic-bezier(0, 0, 0.1, 1),
+    0.2s transform cubic-bezier(0, 0, 0.1, 1) !important;
+  width: 18px !important;
+}
+
+.DayPicker {
+  /* @apply rounded-3xl !important; */
+}
+
+.CalendarDay__selected_span {
+  /* background: #82e0aa;  */
+  @apply bg-red border-red !important;
+  color: white !important;
+  border: none !important;
+}
+
+.CalendarDay__selected {
+  /* background: $dark-red; */
+  @apply bg-red !important;
+  color: white !important;
+  border: none !important;
+}
+
+.CalendarDay__selected:hover {
+  /* background: orange !important; */
+  color: white !important;
+}
+
+.CalendarDay__default {
+}
+.CalendarDay__default:hover {
+  /* background: brown !important; */
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +171,57 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.text {
+  @apply text-lg leading-relaxed;
+}
+
+.overline {
+  @apply text-sm uppercase font-semibold leading-snug tracking-wide;
+}
+
+.caption {
+  @apply text-sm font-light leading-tight;
+}
+
+.caption2 {
+  @apply text-xs italic leading-tight;
+}
+
+.footnote {
+  @apply text-base font-normal;
+}
+
+.headline {
+  @apply text-2xl leading-8 font-black tracking-tight sm:text-3xl;
+}
+
+.subheadline {
+  @apply text-xl leading-relaxed;
+}
+
+.largetitle {
+  @apply text-2xl font-normal;
+}
+
+.subtitle {
+  @apply text-base font-normal;
+}
+
+.title {
+  @apply text-base font-medium;
+}
+
+.title2 {
+  @apply text-sm font-medium;
+}
+
+.title3 {
+  @apply text-sm font-light leading-snug;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
