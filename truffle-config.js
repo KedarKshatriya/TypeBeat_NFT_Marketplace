@@ -55,7 +55,7 @@ module.exports = {
     },
 
     mumbai: {
-      provider: () => new HDWalletProvider(mnemonic, `https://polygon-mumbai.g.alchemy.com/v2/Dy3fI-z1DfzdOdJxU6Sc0LHFrp2-1RHW`),
+      provider: () => new HDWalletProvider(mnemonic, `https://polygon-mumbai.g.alchemy.com/v2/smsSM1gCA65Qr4KkNgBfWNYVsJvRBAgz`),
       network_id: 80001,       // Ropsten's id
      // gas: 5500000,        // Ropsten has a lower block limit than mainnet
      // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
@@ -75,7 +75,7 @@ module.exports = {
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
      ropsten: {
-      provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`),
+      provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/{API}`),
       network_id: 3,       // Ropsten's id
      // gas: 5500000,        // Ropsten has a lower block limit than mainnet
      // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
