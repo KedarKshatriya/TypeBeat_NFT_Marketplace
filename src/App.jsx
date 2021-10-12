@@ -33,9 +33,6 @@ function App() {
   const nameRef = React.useRef(null);
   const descriptionRef = React.useRef(null);
 
-  // const name = "NFT name";
-  // const description = "IPFS minted nft woooooo.";
-
   const mint = (_uri) => {
     blockchain.smartContract.methods
       .mint(blockchain.account, _uri)
@@ -101,7 +98,6 @@ function App() {
     const buffer = Buffer(dataUrl.split(",")[1], "base64");
     return buffer;
   };
-
 
   const getFileData = async () => {
     const inputEl = fileRef.current;
@@ -316,14 +312,19 @@ function App() {
   const NFT = ({ nft }) => {
     console.log(nft.metaData);
     return (
-      <s.Container style={{ padding: 16 }}>
+      <s.Container ai="center" style={{ padding: 16 }}>
+      <div className="mb-8">
         <p className="title">
-          {nft.metaData.name} {nft.id}
+          {nft.metaData.name}
         </p>
-        <img alt={nft.metaData.name} src={nft.metaData.image} width={"100%"} />
+        <p className="subtitle">
+          {nft.metaData.description}
+        </p>
+        </div>
+        <img className="rounded-full mb-8 mx-auto" alt={nft.metaData.name} src={nft.metaData.image} width={"66%"} />
         {nft?.metaData?.audio && (
-          <figure className="mb-8">
-            <audio controls className="" src={nft.metaData.audio}>
+          <figure className="mb-8 mx-auto">
+            <audio controls controlsList="nodownload" className="" src={nft.metaData.audio}>
               Your browser does not support the
               <code>audio</code> element.
             </audio>
@@ -402,75 +403,92 @@ function App() {
         <s.SpacerLarge />
 
         <s.SpacerLarge />
-        <form onSubmit={handleSubmission}>
-          <SignatureCanvas
-            backgroundColor={"#FF385C"}
-            canvasProps={{ width: 350, height: 350 }}
-            ref={elementRef}
-          />
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-white"
-            >
-              Name
-            </label>
-            <div className="mt-1">
-              <input
-                id="name"
-                name="name"
-                type="text"
-                ref={nameRef}
-                required
-                className="appearance-none block w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neutral-900 focus:border-neutral-900 sm:text-sm"
+        {!loading && (
+          <>
+            <form onSubmit={handleSubmission}>
+              <SignatureCanvas
+                backgroundColor={"#FF385C"}
+                canvasProps={{ width: 350, height: 350 }}
+                ref={elementRef}
               />
-            </div>
-          </div>
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-white"
-            >
-              description
-            </label>
-            <div className="mt-1">
-              <input
-                id="description"
-                name="description"
-                type="text"
-                ref={descriptionRef}
-                required
-                className="appearance-none block w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neutral-900 focus:border-neutral-900 sm:text-sm"
-              />
-            </div>
-          </div>
-          <div>
-            <input ref={fileRef} type="file" name="audio" />
-          </div>
-        </form>
-        <s.Container fd={"row"} jc={"center"}>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              startMintingProcess();
-            }}
-            className="button button__primary"
-            type="submit"
-          >
-            Mint
-          </button>
-          <s.SpacerSmall />
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              clearCanvas();
-            }}
-            className="button button__secondary"
-            type="submit"
-          >
-            Clear
-          </button>
-        </s.Container>
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-white"
+                >
+                  Name
+                </label>
+                <div className="mt-1">
+                  <input
+                    style={{
+                      background: "none",
+                      color: "white",
+                    }}
+                    id="name"
+                    name="name"
+                    type="text"
+                    ref={nameRef}
+                    required
+                    className="appearance-none block w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neutral-900 focus:border-neutral-900 sm:text-sm"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-white"
+                >
+                  description
+                </label>
+                <div className="mt-1">
+                  <input
+                    style={{
+                      background: "none",
+                      color: "white",
+                    }}
+                    id="description"
+                    name="description"
+                    type="text"
+                    ref={descriptionRef}
+                    required
+                    className="appearance-none block text-white w-full px-3 py-2 border border-neutral-300 rounded-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neutral-900 focus:border-neutral-900 sm:text-sm"
+                  />
+                </div>
+              </div>
+              <div>
+                <input
+                  style={{ color: "white" }}
+                  ref={fileRef}
+                  type="file"
+                  name="audio"
+                />
+              </div>
+            </form>
+            <s.Container fd={"row"} jc={"center"}>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  startMintingProcess();
+                }}
+                className="button button__primary"
+                type="submit"
+              >
+                Mint
+              </button>
+              <s.SpacerSmall />
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  clearCanvas();
+                }}
+                className="button button__secondary"
+                type="submit"
+              >
+                Clear
+              </button>
+            </s.Container>
+          </>
+        )}
         <Gallery />
         <s.SpacerLarge />
       </s.Container>
